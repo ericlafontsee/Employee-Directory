@@ -4,7 +4,7 @@ import TableRow from "../components/TableRow";
 
 class Search extends Component {
   state = {
-    search: "",
+    searchField: "",
     employee: [],
     results: [],
     error: ""
@@ -26,16 +26,33 @@ class Search extends Component {
             phone: data[i].cell
           });
         }
-        this.setState({ employee: employeeRecords });
+        this.setState({ employee: employeeRecords, results: employeeRecords });
       })
       .catch((err) => console.log(err));
   }
+   searchEmployee = (event) => {
+      var value = event.target.value;
+      this.setState({searchField: value});
+      console.log(value);
+      var employeeList = [];
+      var currentEmployees = this.state.employee;
+      for(var i = 0; i < currentEmployees.length; i++){
+        if (currentEmployees[i].firstName.indexOf(value) > -1){
+          employeeList.push(currentEmployees[i]);
+        }
+      }
+      // var employeeList = this.state.employee.filter(o => {
+      //   return (o.firstName == value);
+      // })
+      console.log(employeeList);
+      this.setState({employee: employeeList});
+      
+   }
 
   render() {
     return (
       <div>
-        <input />
-        <button>Search</button>
+        <input name="searchField" value={this.state.searchField} onChange={this.searchEmployee}/>
         <table>
           <thead>
             <tr>
