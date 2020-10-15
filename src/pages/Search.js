@@ -13,10 +13,10 @@ class Search extends Component {
   // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
     API.getUsers()
-      .then((res) => {
+      .then(res => {
         console.log(res);
         const data = res.data.results;
-        var employeeRecords = [];
+        const employeeRecords = [];
         for (var i = 0; i < data.length; i++) {
           employeeRecords.push({
             firstName: data[i].name.first,
@@ -26,17 +26,18 @@ class Search extends Component {
             phone: data[i].cell
           });
         }
-        this.setState({ employee: employeeRecords, results: employeeRecords });
+        this.setState({ employee: employeeRecords, results: employeeRecords }); 
       })
       .catch((err) => console.log(err));
   }
-   searchEmployee = (event) => {
-      var value = event.target.value;
+   searchEmployee = event => {
+      const value = event.target.value;
       this.setState({searchField: value});
-      console.log(value);
-      var employeeList = [];
-      var currentEmployees = this.state.employee;
+      const employeeList = [];
+      const currentEmployees = this.state.employee;
       for(var i = 0; i < currentEmployees.length; i++){
+      // const name = currentEmployees[i].name.first + " " + currentEmployees[i].name.last;
+
         if (currentEmployees[i].firstName.indexOf(value) > -1){
           employeeList.push(currentEmployees[i]);
         }
