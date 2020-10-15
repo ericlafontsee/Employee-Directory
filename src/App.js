@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import Search from "./pages/Search";
-import './App.css';
+// import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
+
+import "./App.css";
 
 function App() {
   return (
-  <div>
-    <Wrapper>
-      <Search />
-    </Wrapper>
-  </div>
+    <div>
+        <Header />
+        <Search />
+    </div>
   );
 }
 
