@@ -12,7 +12,6 @@ class Search extends Component {
     error: ""
   };
 
-  // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
     API.getUsers()
       .then((res) => {
@@ -44,7 +43,7 @@ class Search extends Component {
   render() {
     return (
       <Container style={{ minHeight: "80%" }}>
-        <Row style={{ width: "50%" }}>
+        <Row style={{ width: "100%" }}>
           <input
             name="searchField"
             value={this.state.searchField}
@@ -52,9 +51,9 @@ class Search extends Component {
           />
         </Row>
         <Row>
-          <table>
+          <table style={{ width: "100%" }}>
             <thead>
-              <tr>
+              <tr style={{ color: "white", fontSize: "25px" }}>
                 <th></th>
                 <th>First Name</th>
                 <th>Last Name</th>
