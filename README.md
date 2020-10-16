@@ -5,6 +5,8 @@ For this project, I created an employee directory with React. The user can searc
 any employee by first or last name. The search will filter the user's results and return   
 the search employee's picture, name, email, and phone number.
 
+Try the deployed app here: https://ericlafontsee.github.io/Employee-Directory/
+
 ## Table Of Contents
 * [Usage](#Usage)
 * [Prerequisites](#Prerequisites)
