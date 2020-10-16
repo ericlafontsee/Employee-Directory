@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 function TableRow(props){
-    return (<tr>
+    return (<tr> 
         <td>
             <img src={props.picture} alt={props.firstName}></img>
         </td>

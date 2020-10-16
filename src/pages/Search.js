@@ -45,13 +45,14 @@ class Search extends Component {
       <Container style={{ minHeight: "80%" }}>
         <Row style={{ width: "100%" }}>
           <input
+          style={{ margin: "0 auto", width: "50%" }}
             name="searchField"
             value={this.state.searchField}
             onChange={this.searchEmployee}
           />
         </Row>
         <Row>
-          <table style={{ width: "100%" }}>
+          <table style={{ width: "100%" }} className="col-md-12">
             <thead>
               <tr style={{ color: "white", fontSize: "25px" }}>
                 <th></th>
