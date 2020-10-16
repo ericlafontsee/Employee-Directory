@@ -15,7 +15,6 @@ class Search extends Component {
   componentDidMount() {
     API.getUsers()
       .then(res => {
-        console.log(res);
         const data = res.data.results;
         const employeeRecords = [];
         for (var i = 0; i < data.length; i++) {
@@ -28,7 +27,7 @@ class Search extends Component {
           });
         }
         this.setState({ employee: employeeRecords, results: employeeRecords }); 
-        console.log(employeeRecords);
+        // this.setState({ employee: res.data.results }); 
       })
       .catch((err) => console.log(err));
   }
@@ -36,16 +35,28 @@ class Search extends Component {
    searchEmployee = event => {
       const value = event.target.value;
       this.setState({searchField: value});
-      const employeeList = [];
-      const currentEmployees = this.state.employee;
-      for(var i = 0; i < currentEmployees.length; i++){
-        if (currentEmployees[i].firstName.indexOf(value) > -1){
-          employeeList.push(currentEmployees[i]);
-        }
-      }
+      // const employeeList = [];
+      // const currentEmployees = this.state.employee;
+      // for(var i = 0; i < currentEmployees.length; i++){
+      //   if (currentEmployees[i].firstName.indexOf(value) > -1){
+      //     employeeList.push(currentEmployees[i]);
+      //   }
+      // }
       // const filtered = currentEmployees.filter(res =>  value === `${res.firstName} ${res.lastName}` );
+      const fuse = new Fuse(this.state.employee, {
+        keys: [
+          'name.first',
+          'name.last',
+          'email',
+          'phone'
+
+        ]
+      })
       
-      this.setState({employee: employeeList});
+      // this.setState({employee: employeeList});
+      this.setState({
+        results: fuse.search(event).map(el => el.item)
+      });
       
    }
 
