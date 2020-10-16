@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import TableRow from "../components/TableRow";
+import Fuse from 'fuse.js';
 
 class Search extends Component {
   state = {
@@ -27,25 +28,23 @@ class Search extends Component {
           });
         }
         this.setState({ employee: employeeRecords, results: employeeRecords }); 
+        console.log(employeeRecords);
       })
       .catch((err) => console.log(err));
   }
+  
    searchEmployee = event => {
       const value = event.target.value;
       this.setState({searchField: value});
       const employeeList = [];
       const currentEmployees = this.state.employee;
       for(var i = 0; i < currentEmployees.length; i++){
-      // const name = currentEmployees[i].name.first + " " + currentEmployees[i].name.last;
-
         if (currentEmployees[i].firstName.indexOf(value) > -1){
           employeeList.push(currentEmployees[i]);
         }
       }
-      // var employeeList = this.state.employee.filter(o => {
-      //   return (o.firstName == value);
-      // })
-      console.log(employeeList);
+      // const filtered = currentEmployees.filter(res =>  value === `${res.firstName} ${res.lastName}` );
+      
       this.setState({employee: employeeList});
       
    }
@@ -65,7 +64,7 @@ class Search extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.employee.map((record, key)=> {
+            {this.state.employee.map((record, key) => {
               return (<TableRow 
                 firstName = {record.firstName}
                 lastName = {record.lastName}
