@@ -25,9 +25,22 @@ class Search extends Component {
         }));
 
         this.setState({ employees: employees, filtered: employees });
+        this.sortEmployees();
       })
       .catch((err) => console.log(err));
   }
+
+  sortEmployees() { //Miller Rich, a classmate of mine, helped me with this sort function.
+    const employees = this.state.employees;
+    employees.sort(function (a, b) {
+        var nameA = a.firstName.toLowerCase();
+        var nameB = b.firstName.toLowerCase();
+        return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+    }).then(
+        this.setState({ employees: employees })
+    );
+};
+
 
   searchEmployee = (event) => {
     const value = event.target.value.toLowerCase();

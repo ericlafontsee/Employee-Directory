@@ -68,6 +68,7 @@ elafontsee@gmail.com
     * Worked with me to set up the project
 * Anthony Cooper - Trilogy  
     * Worked with me on the filtering function 
+* Collaborated with classmates: Brendon Conatser, Miller Rich, and Henry Parrish
 
 
  
